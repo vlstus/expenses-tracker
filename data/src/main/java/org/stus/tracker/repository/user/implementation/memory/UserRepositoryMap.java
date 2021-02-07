@@ -25,8 +25,10 @@ public class UserRepositoryMap implements UserRepository {
     public Long add(User entity) {
         if (Objects.isNull(entity) || Objects.nonNull(entity.getId()))
             throw new IllegalArgumentException("New entity must be provided");
-        repository.put(idGenerator.getAndIncrement(), entity);
-        return idGenerator.get();
+        long nextId = idGenerator.getAndIncrement();
+        entity.setId(nextId);
+        repository.put(nextId, entity);
+        return nextId;
     }
 
     @Override
