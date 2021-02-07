@@ -1,6 +1,6 @@
 package org.stus.tracker.repository;
 
-public interface EntityRepository<T, ID> {
+public interface EntityRepository<T, ID extends Number> {
 
     T get(ID id);
 
