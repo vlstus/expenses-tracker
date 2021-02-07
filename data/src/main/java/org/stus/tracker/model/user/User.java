@@ -1,14 +1,14 @@
 package org.stus.tracker.model.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.stus.tracker.model.AbstractBaseEntity;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Getter @Setter @RequiredArgsConstructor
+@Getter @Setter @AllArgsConstructor
 public class User extends AbstractBaseEntity {
 
     private String firstName;
