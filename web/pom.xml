@@ -14,9 +14,15 @@
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
+        <data.module.version>0.0.1-SNAPSHOT</data.module.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.stus</groupId>
+            <artifactId>data</artifactId>
+            <version>${data.module.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>

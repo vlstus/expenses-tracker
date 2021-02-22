@@ -1,14 +1,14 @@
 package org.stus.tracker.repository.user.implementation.memory;
 
+import org.springframework.stereotype.Repository;
 import org.stus.tracker.model.user.User;
 import org.stus.tracker.repository.user.UserRepository;
 
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
+@Repository
 public class UserRepositoryMap implements UserRepository {
 
     private Map<Long, User> repository = new ConcurrentHashMap<>();
@@ -19,6 +19,11 @@ public class UserRepositoryMap implements UserRepository {
     public User get(Long id) {
         return Optional.ofNullable(repository.get(id))
                 .orElseThrow(() -> new IllegalArgumentException("No user for such id found"));
+    }
+
+    @Override
+    public Collection<User> getAll() {
+        return Collections.unmodifiableCollection(repository.values());
     }
 
     @Override
