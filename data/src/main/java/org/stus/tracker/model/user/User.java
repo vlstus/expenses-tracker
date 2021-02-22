@@ -16,6 +16,14 @@ public class User extends AbstractBaseEntity {
     private String email;
     private LocalDate registrationDate;
 
+    public User(Long id, String firstName, String lastName, String email, LocalDate registrationDate) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.registrationDate = registrationDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

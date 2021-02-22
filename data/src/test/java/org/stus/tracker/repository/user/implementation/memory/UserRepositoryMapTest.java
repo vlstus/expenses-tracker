@@ -6,6 +6,7 @@ import org.stus.tracker.model.user.User;
 import org.stus.tracker.repository.user.UserRepository;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,6 +33,14 @@ class UserRepositoryMapTest extends GenericTest {
         assertEquals("John", john.getFirstName());
         assertEquals("Jane", jane.getFirstName());
         assertThrows(IllegalArgumentException.class, () -> userRepository.get(42L));
+    }
+
+    @Test
+    void getAll() {
+        final Collection<User> allUsers = userRepository.getAll();
+        Assertions.assertThat(allUsers)
+                .containsAll(List.of(new User("John", "Doe", "john@gmail.com", LocalDate.now()),
+                        new User("Jane", "Doe", "jane@gmail.com", LocalDate.now().minusDays(1))));
     }
 
     @Test
