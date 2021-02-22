@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService extends GenericService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public List<User> getAll() {
         return List.copyOf(userRepository.getAll());

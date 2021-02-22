@@ -11,11 +11,11 @@ import org.stus.tracker.service.user.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("users/")
+@RequestMapping("/api/users/")
 @RequiredArgsConstructor
 public class UserRestController extends GenericController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping
     public List<User> getAll() {
