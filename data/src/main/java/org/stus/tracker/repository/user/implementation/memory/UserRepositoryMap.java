@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.stus.tracker.model.user.User;
 import org.stus.tracker.repository.user.UserRepository;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -14,6 +15,11 @@ public class UserRepositoryMap implements UserRepository {
     private Map<Long, User> repository = new ConcurrentHashMap<>();
 
     private AtomicLong idGenerator = new AtomicLong();
+
+    {
+        this.add(new User("John", "Doe", "john@gmail.com", LocalDate.of(1995, 1, 12)));
+        this.add(new User("Jane", "Doe", "jane@gmail.com", LocalDate.of(1991, 1, 12)));
+    }
 
     @Override
     public User get(Long id) {
